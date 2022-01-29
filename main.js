@@ -37,3 +37,62 @@ function speak(){
     var utterThis = new SpeechSynthesisUtterance(speak_data_1 + speak_data_2)
     synth.speak(utterThis);
 }
+
+function gotResult(error, results) {
+    if(error) {
+        console.error(error);
+    }else {
+        console.log(results);
+    
+        prediction_1 = results[0].label;
+        prediction_2 = results[1].label;
+        document.getElementById("result_emotion_name1").innerHTML = prediction_1;
+        document.getElementById("result_emotion_name2").innerHTML = prediction_2;
+    speak();
+    if(prediction_1 == "Surprised"){
+    
+        document.getElementById("update_emoji1").innerHTML = "&#9996;";
+        
+    }
+    if(prediction_1 == "sad"){
+    
+        document.getElementById("update_emoji1").innerHTML = "&#9994;";
+        
+    }
+    if(prediction_1 == "Neutral"){
+    
+        document.getElementById("update_emoji1").innerHTML = "&#128076;";
+    }
+    if(prediction_1 == "angry"){
+    
+        document.getElementById("update_emoji1").innerHTML = "&#128077;";
+    }
+    
+    if(prediction_2 == "Surprised"){
+    
+        document.getElementById("update_emoji2").innerHTML = "&#9996;";
+        
+    }
+    if(prediction_2 == "sad"){
+    
+        document.getElementById("update_emoji2").innerHTML = "&#9994;";
+    }
+    if(prediction_2 == "Neutral")ç
+    
+        document.getElementById("update_emoji2").innerHTML = "&#128077;";
+    }
+    if(prediction_2 == "angry"){
+    
+        document.getElementById("update_emoji2").innerHTML = "&#128077;";
+    }
+    }
+    
+    
+    function speak(){
+        var synth = window.speechSynthesis;
+        speak_data_1 = "The first prediction is " + prediction_1;
+        speak_data_2 = "  and the second prediction is " + prediction_2;
+        var utterThis = new SpeechSynthesisUtterance(speak_data_1 + speak_data_2);
+    synth.speak(utterThis);
+    
+    }
